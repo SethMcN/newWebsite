@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.mainHeader {
+    @apply text-4xl font-bold text-center;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: white;
+    }
+}
