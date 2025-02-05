@@ -1,10 +1,40 @@
 @import "tailwindcss";
 
-.mainHeader {
-    @apply text-4xl font-bold text-center;
+.app{
+    display:grid;
+    width: 75px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 10px;
 }
 
+.window{
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.window {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 3px;
+  }
+  
+.window-header {
+    background: #000080;
+    color: white;
+    padding: 5px;
+    margin:3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-content {
+  padding: 15px;
+  height: 100%;
+}
 
 @media (prefers-color-scheme: dark) {
     body {
