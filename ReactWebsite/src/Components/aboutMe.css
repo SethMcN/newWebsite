@@ -1,0 +1,29 @@
+.about-me-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.about-me-header h2 {
+    margin: 0;
+}
+.about-me-links{
+    list-style-type: none;
+    display: flex;
+    justify-content: start;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    padding: 0%;
+}
+
+.about-me-links li a {
+    text-decoration: underline;
+    color: #343a40;
+    font-weight: bold;
+    align-items: end;
+    justify-content: center;
+    display: flex;
+    padding-right: 5px;
+    padding-left: 5px;
+}

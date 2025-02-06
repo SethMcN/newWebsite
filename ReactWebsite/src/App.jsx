@@ -1,38 +1,24 @@
 import React, { useState } from "react";
 import { Rnd } from "react-rnd";
+import AboutMe from "./Components/aboutMe";
+import Projects from "./Components/projects";
 import {
   FaFolder,
   FaUser,
   FaTerminal,
   FaTimes,
   FaGamepad,
+  FaSquare,
 } from "react-icons/fa";
 
 function App() {
   const [windows, setWindows] = useState([]);
   const [activeWindow, setActiveWindow] = useState(null);
 
-  const About = () => (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, ab! Maiores
-      ipsum quis deleniti temporibus architecto aut non deserunt quod iusto
-      quidem. Fuga ullam hic sunt, unde ipsum tenetur quis. Lorem ipsum dolor
-      sit amet consectetur adipisicing elit. Rem, ab! Maiores ipsum quis
-      deleniti temporibus architecto aut non deserunt quod iusto quidem. Fuga
-      ullam hic sunt, unde ipsum tenetur quis. Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Rem, ab! Maiores ipsum quis deleniti
-      temporibus architecto aut non deserunt quod iusto quidem. Fuga ullam hic
-      sunt, unde ipsum tenetur quis. Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Rem, ab! Maiores ipsum quis deleniti temporibus
-      architecto aut non deserunt quod iusto quidem. Fuga ullam hic sunt, unde
-      ipsum tenetur quis.
-    </div>
-  );
-  const Projects = () => <div>Projects List</div>;
   const Terminal = () => <div>Terminal Interface</div>;
 
   const apps = [
-    { id: "about", name: "About Me", icon: <FaUser />, component: <About /> },
+    { id: "about", name: "About Me", icon: <FaUser />, component: <AboutMe /> },
     {
       id: "projects",
       name: "Projects",
@@ -59,6 +45,27 @@ function App() {
     console.log(activeWindow);
   };
 
+  const fullScreenWindow = (windowId) => {
+    const windowElement = document.querySelector(`.window.active`);
+    if (windowElement) {
+      if (
+        windowElement.style.width === "90vw" &&
+        windowElement.style.height === "90vh"
+      ) {
+        windowElement.style.width = "";
+        windowElement.style.height = "";
+        windowElement.style.top = "";
+        windowElement.style.left = "";
+        windowElement.style.transform = "";
+      } else {
+        windowElement.style.width = "90vw";
+        windowElement.style.height = "90vh";
+        windowElement.style.top = "0";
+        windowElement.style.left = "0";
+      }
+    }
+  };
+
   return (
     <div className="os-desktop">
       {/* Desktop Icons */}
@@ -69,7 +76,6 @@ function App() {
             className="desktop-icon"
             onDoubleClick={() => openApp(app.id)}
           >
-            {app.id}
             {app.icon}
             <span>{app.name}</span>
           </div>
@@ -81,13 +87,9 @@ function App() {
         <Rnd
           key={window.id}
           default={{
-            x: 100,
-            y: 100,
-            width: window.id === "doom" ? 640 : 600, // Wider window for Doom
-            height: window.id === "doom" ? 400 : 400, // Taller window for Doom
+            x: 500,
+            y: 400,
           }}
-          minWidth={window.id === "doom" ? 640 : 300}
-          minHeight={window.id === "doom" ? 400 : 200}
           style={{ zIndex: window.zIndex }}
           onMouseDown={() => setActiveWindow(window.id)}
         >
@@ -96,9 +98,14 @@ function App() {
           >
             <div className="window-header">
               <h3>{apps.find((a) => a.id === window.id).name}</h3>
-              <button onClick={() => closeApp(window.id)}>
-                <FaTimes />
-              </button>
+              <div className="window-actions">
+                <button onClick={() => closeApp(window.id)}>
+                  <FaTimes />
+                </button>
+                <button onClick={() => fullScreenWindow(window.id)}>
+                  <FaSquare />
+                </button>
+              </div>
             </div>
             <div className="window-content">
               {apps.find((a) => a.id === window.id).component}
