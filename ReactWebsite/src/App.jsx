@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import { Rnd } from "react-rnd";
-import { FaFolder, FaUser, FaTerminal, FaTimes } from "react-icons/fa";
+import {
+  FaFolder,
+  FaUser,
+  FaTerminal,
+  FaTimes,
+  FaGamepad,
+} from "react-icons/fa";
 
 function App() {
   const [windows, setWindows] = useState([]);
   const [activeWindow, setActiveWindow] = useState(null);
 
-  const About = () => <div>About Me Content</div>;
+  const About = () => (
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, ab! Maiores
+      ipsum quis deleniti temporibus architecto aut non deserunt quod iusto
+      quidem. Fuga ullam hic sunt, unde ipsum tenetur quis. Lorem ipsum dolor
+      sit amet consectetur adipisicing elit. Rem, ab! Maiores ipsum quis
+      deleniti temporibus architecto aut non deserunt quod iusto quidem. Fuga
+      ullam hic sunt, unde ipsum tenetur quis. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Rem, ab! Maiores ipsum quis deleniti
+      temporibus architecto aut non deserunt quod iusto quidem. Fuga ullam hic
+      sunt, unde ipsum tenetur quis. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Rem, ab! Maiores ipsum quis deleniti temporibus
+      architecto aut non deserunt quod iusto quidem. Fuga ullam hic sunt, unde
+      ipsum tenetur quis.
+    </div>
+  );
   const Projects = () => <div>Projects List</div>;
   const Terminal = () => <div>Terminal Interface</div>;
 
@@ -59,9 +80,14 @@ function App() {
       {windows.map((window) => (
         <Rnd
           key={window.id}
-          default={{ x: 300, y: 200, width: 1000, height: 200 }}
-          minWidth={300}
-          minHeight={200}
+          default={{
+            x: 100,
+            y: 100,
+            width: window.id === "doom" ? 640 : 600, // Wider window for Doom
+            height: window.id === "doom" ? 400 : 400, // Taller window for Doom
+          }}
+          minWidth={window.id === "doom" ? 640 : 300}
+          minHeight={window.id === "doom" ? 400 : 200}
           style={{ zIndex: window.zIndex }}
           onMouseDown={() => setActiveWindow(window.id)}
         >

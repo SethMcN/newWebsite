@@ -10,35 +10,54 @@
 }
 
 .window{
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 100%;
+    background-color: aliceblue;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 10px;
 }
 
-.window {
-    background: white;
-    border: 2px solid #000;
-    border-radius: 3px;
-  }
-  
-.window-header {
-    background: #000080;
-    color: white;
-    padding: 5px;
-    margin:3px;
+.window-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    background-color: #1051df;
 }
 
-.window-content {
-  padding: 15px;
-  height: 100%;
+.window-content{
+    padding: 10px;
+    color: black;
+    overflow-y: auto;
+    max-height: calc(100% - 40px); 
+
+}
+
+
+/*Scroll bar*/
+
+.window-content::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+}
+
+.window-content::-webkit-scrollbar-track {
+    background: #b3b2b2;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #121212;
+        background-color: #36a0d1ab;
         color: white;
     }
 }
