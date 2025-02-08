@@ -89,8 +89,12 @@ function App() {
           default={{
             x: 500,
             y: 400,
+            width: 500,
+            height: 400,
           }}
-          style={{ zIndex: window.zIndex }}
+          minWidth={100}
+          minHeight={100}
+          // bounds="os-desktop"
           onMouseDown={() => setActiveWindow(window.id)}
         >
           <div
