@@ -18,20 +18,55 @@ function App() {
   const Terminal = () => <div>Terminal Interface</div>;
 
   const apps = [
-    { id: "about", name: "About Me", icon: <FaUser />, component: <AboutMe /> },
+    {
+      id: "about",
+      name: "About Me",
+      icon: <FaUser />,
+      component: <AboutMe />,
+      windowSettings: {
+        default: { x: 100, y: 100, width: 500, height: 300 },
+        minWidth: 300,
+        minHeight: 200,
+        resizable: true,
+      },
+    },
     {
       id: "projects",
       name: "Projects",
       icon: <FaFolder />,
       component: <Projects />,
+      windowSettings: {
+        default: { x: 200, y: 100, width: 500, height: 400 },
+        minWidth: 300,
+        minHeight: 200,
+        resizable: true,
+      },
     },
     {
       id: "terminal",
       name: "Terminal",
       icon: <FaTerminal />,
       component: <Terminal />,
+      windowSettings: {
+        default: { x: 100, y: 100, width: 400, height: 300 },
+        minWidth: 300,
+        minHeight: 200,
+        resizable: true,
+      },
     },
   ];
+
+  const bringToFront = (appId) => {
+    const maxZIndex = Math.max(...windows.map((window) => window.zIndex), 0);
+
+    setWindows((prevWindows) =>
+      prevWindows.map((window) =>
+        window.id === appId ? { ...window, zIndex: maxZIndex + 1 } : window
+      )
+    );
+
+    setActiveWindow(appId);
+  };
 
   const closeApp = (appId) => {
     setWindows(windows.filter((window) => window.id !== appId));
@@ -83,41 +118,46 @@ function App() {
       </div>
 
       {/* Windows */}
-      {windows.map((window) => (
-        <Rnd
-          key={window.id}
-          default={{
-            x: 500,
-            y: 400,
-            width: 500,
-            height: 400,
-          }}
-          minWidth={300}
-          minHeight={150}
-          dragHandleClassName="window-header"
-          // bounds="os-desktop"
-          onMouseDown={() => setActiveWindow(window.id)}
-        >
-          <div
-            className={`window ${activeWindow === window.id ? "active" : ""}`}
+      {windows.map((window) => {
+        const app = apps.find((a) => a.id === window.id);
+        return (
+          <Rnd
+            key={window.id}
+            default={app.windowSettings.default}
+            minWidth={app.windowSettings.minWidth}
+            minHeight={app.windowSettings.minHeight}
+            style={{ zIndex: window.zIndex }}
+            dragHandleClassName="window-header"
+            onMouseDown={() => bringToFront(window.id)}
           >
-            <div className="window-header">
-              <h3>{apps.find((a) => a.id === window.id).name}</h3>
-              <div className="window-actions">
+            <div
+              className={`window ${activeWindow === window.id ? "active" : ""}`}
+            >
+              <div className="window-header">
+                <h3>{app.name}</h3>
                 <button onClick={() => closeApp(window.id)}>
                   <FaTimes />
                 </button>
-                <button onClick={() => fullScreenWindow(window.id)}>
-                  <FaSquare />
-                </button>
               </div>
+              <div className="window-content">{app.component}</div>
             </div>
-            <div className="window-content">
-              {apps.find((a) => a.id === window.id).component}
-            </div>
-          </div>
-        </Rnd>
-      ))}
+          </Rnd>
+        );
+      })}
+
+      {/* Taskbar */}
+      <div className="taskbar">
+        <div className="start-menu">
+          <button>Start</button>
+        </div>
+        <div className="open-apps">
+          {windows.map((window) => (
+            <button key={window.id} onClick={() => bringToFront(window.id)}>
+              {apps.find((a) => a.id === window.id).icon}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
