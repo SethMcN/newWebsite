@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Rnd } from "react-rnd";
 import AboutMe from "./Components/aboutMe";
-import Projects from "./Components/projects";
+import Projects from "./Components/project_components/projects";
 import {
   FaFolder,
   FaUser,
@@ -92,8 +92,9 @@ function App() {
             width: 500,
             height: 400,
           }}
-          minWidth={100}
-          minHeight={100}
+          minWidth={300}
+          minHeight={150}
+          dragHandleClassName="window-header"
           // bounds="os-desktop"
           onMouseDown={() => setActiveWindow(window.id)}
         >
