@@ -10,6 +10,7 @@ import {
   FaTimes,
   FaGamepad,
   FaSquare,
+  FaCog,
 } from "react-icons/fa";
 
 function App() {
@@ -50,6 +51,18 @@ function App() {
       component: <Terminal />,
       windowSettings: {
         default: { x: 100, y: 100, width: 400, height: 300 },
+        minWidth: 300,
+        minHeight: 200,
+        resizable: true,
+      },
+    },
+    {
+      id: "settings",
+      name: "Settings",
+      icon: <FaCog />,
+      component: <div>Settings Interface</div>,
+      windowSettings: {
+        default: { x: 150, y: 150, width: 400, height: 300 },
         minWidth: 300,
         minHeight: 200,
         resizable: true,
