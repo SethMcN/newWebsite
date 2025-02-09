@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Rnd } from "react-rnd";
 import AboutMe from "./Components/aboutMe";
 import Projects from "./Components/project_components/projects";
+import MenuBar from "./Components/project_components/MenuBar";
 import {
   FaFolder,
   FaUser,
@@ -37,7 +38,7 @@ function App() {
       component: <Projects />,
       windowSettings: {
         default: { x: 200, y: 100, width: 500, height: 400 },
-        minWidth: 300,
+        minWidth: 500,
         minHeight: 200,
         resizable: true,
       },
@@ -78,6 +79,15 @@ function App() {
     console.log(windows);
     setActiveWindow(appId);
     console.log(activeWindow);
+  };
+
+  const triggerResize = () => {
+    const event = new Event("resize", { bubbles: true });
+    dispatchEvent(event);
+  };
+
+  const handleResize = () => {
+    triggerResize();
   };
 
   const fullScreenWindow = (windowId) => {
@@ -127,6 +137,8 @@ function App() {
             minWidth={app.windowSettings.minWidth}
             minHeight={app.windowSettings.minHeight}
             style={{ zIndex: window.zIndex }}
+            onResize={handleResize}
+            onResizeStop={handleResize}
             dragHandleClassName="window-header"
             onMouseDown={() => bringToFront(window.id)}
           >

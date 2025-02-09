@@ -14,11 +14,20 @@
     border-radius: 5%;
 }
 
-.project-links-container{
+.language-logo{
+    display: flex;
+    justify-content: center;
+}
 
-    margin-top: 10px;
+.language-logo:hover{
+    background-color: rgb(40, 40, 40);
+    border-radius: 5%;
 }
 
 .keen-slider {
     display: flex;
+
+    background-color: rgb(58, 58, 58);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

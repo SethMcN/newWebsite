@@ -30,7 +30,6 @@
 }
 
 .window-content{
-    padding: 10px;
     color: black;
     overflow-y: auto;
     max-height: calc(100% - 44px); 
