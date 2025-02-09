@@ -1,33 +1,80 @@
-.project-card{
+@import url("/src/colors.css");
+
+.projects-container{
+    margin: 10px;
+}
+
+.project-card {
     justify-content: center;
     align-items: center;
-    background-color: #c26969;
+    background-color: var(--primary-color);
     margin-bottom: 30px;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--quaternary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.project-link{
-    background-color: rgb(139, 139, 230);
-    padding: 2px;
-    margin-right: 10px;
+.project-title {
+    justify-self: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.project-description {
+    font-size: 1em;
     margin-top: 10px;
-    border-radius: 5%;
 }
 
-.language-logo{
+
+.project-card:hover {
+    transform: scale(1.01);
+}
+
+.project-links-container{
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
-.language-logo:hover{
-    background-color: rgb(40, 40, 40);
-    border-radius: 5%;
+
+
+.project-link {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: var(--quaternary-color);
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.project-link:hover {
+    background-color: var(--quinary-color);
+}
+
+.language-logo {
+    display: flex;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+
+.language-logo:hover {
+    background-color: var(--quinary-color);
+    border-radius: 5px;
 }
 
 .keen-slider {
     display: flex;
-
-    background-color: rgb(58, 58, 58);
+    background-color: var(--tertiary-color);
     padding-top: 10px;
     padding-bottom: 10px;
+    color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

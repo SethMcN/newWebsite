@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("/src/colors.css");
 
 .os-desktop{
     width: 100%;

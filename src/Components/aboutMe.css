@@ -1,13 +1,17 @@
+@import url("/src/colors.css");
+
 .about-me-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    background-color: var(--quaternary-color);
 }
 
 .about-me-header h2 {
     margin: 0;
+    color: var(--primary-color);
 }
+
 .about-me-links{
     list-style-type: none;
     display: flex;
@@ -19,7 +23,7 @@
 
 .about-me-links li a {
     text-decoration: underline;
-    color: #343a40;
+    color: var(--secondary-color);
     font-weight: bold;
     align-items: end;
     justify-content: center;

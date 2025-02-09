@@ -21,19 +21,49 @@ export default function Projects() {
 
   if (language === "JavaScript") {
     return (
-      <div className="projects-container">
+      <div className="projects-content">
         <div className="menu">
           <MenuBar setLanguage={setLanguage} />
         </div>
-        <div className="project-card-container">
-          <ProjectsCard
-            ProjectName={"Todo List Web Application"}
-            description={
-              "Description: This was my first project working with JavaScript and React. It helped me understand the basics of state management and component-based architecture. I followed a tutorial but added my own features to enhance the functionality."
-            }
-            githubLink={"https://github.com/SethMcN/ReactJs-TodoList/tree/main"}
-            projectLink={"https://react-js-todo-list-delta.vercel.app"}
-          />
+        <div className="projects-container">
+          <div className="project-card-container">
+            <ProjectsCard
+              ProjectName={"Todo List Web Application"}
+              image={"ToDoListImg.png"}
+              imageClassName={"TodoListImg"}
+              description={
+                "Description: This was my first project working with JavaScript and React. It helped me understand the basics of state management and component-based architecture. I followed a tutorial but added my own features to enhance the functionality."
+              }
+              githubLink={
+                "https://github.com/SethMcN/ReactJs-TodoList/tree/main"
+              }
+              projectLink={"https://react-js-todo-list-delta.vercel.app"}
+            />
+          </div>
+          <div className="project-card-container">
+            <ProjectsCard
+              ProjectName={"Todo List Web Application"}
+              description={
+                "Description: This was my first project working with JavaScript and React. It helped me understand the basics of state management and component-based architecture. I followed a tutorial but added my own features to enhance the functionality."
+              }
+              githubLink={
+                "https://github.com/SethMcN/ReactJs-TodoList/tree/main"
+              }
+              projectLink={"https://react-js-todo-list-delta.vercel.app"}
+            />
+          </div>
+          <div className="project-card-container">
+            <ProjectsCard
+              ProjectName={"Todo List Web Application"}
+              description={
+                "Description: This was my first project working with JavaScript and React. It helped me understand the basics of state management and component-based architecture. I followed a tutorial but added my own features to enhance the functionality."
+              }
+              githubLink={
+                "https://github.com/SethMcN/ReactJs-TodoList/tree/main"
+              }
+              projectLink={"https://react-js-todo-list-delta.vercel.app"}
+            />
+          </div>
         </div>
       </div>
     );
