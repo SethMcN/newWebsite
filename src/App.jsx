@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Rnd } from "react-rnd";
 import AboutMe from "./Components/aboutMe";
 import Projects from "./Components/project_components/projects";
-import MenuBar from "./Components/project_components/MenuBar";
 import {
   FaFolder,
   FaUser,

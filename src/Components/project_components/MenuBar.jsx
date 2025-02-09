@@ -4,7 +4,9 @@ import { useKeenSlider } from "keen-slider/react";
 
 const animation = { duration: 20000, easing: (t) => t };
 
-const MenuBar = () => {
+const MenuBar = (props) => {
+  const setLanguage = props.setLanguage;
+
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     renderMode: "performance",
@@ -29,29 +31,65 @@ const MenuBar = () => {
     },
   });
 
+  const javascript = () => {
+    setLanguage("JavaScript");
+  };
+
+  const html = () => {
+    setLanguage("HTML");
+  };
+
+  const css = () => {
+    setLanguage("CSS");
+  };
+
+  const react = () => {
+    setLanguage("React");
+  };
+
+  const python = () => {
+    setLanguage("Python");
+  };
+
+  const c = () => {
+    setLanguage("C");
+  };
+
   return (
     <div ref={sliderRef} className="keen-slider">
-      <div className="keen-slider__slide javascript-logo language-logo">
+      <div
+        className="keen-slider__slide javascript-logo language-logo"
+        onClick={javascript}
+      >
         <img src="\language_icons\javascript-logo-64x64.png" alt="" />
       </div>
 
-      <div className="keen-slider__slide html-logo language-logo ">
+      <div
+        className="keen-slider__slide html-logo language-logo "
+        onClick={html}
+      >
         <img src="\language_icons\html-logo-64x64.png" alt="" />
       </div>
 
-      <div className="keen-slider__slide css-logo language-logo">
+      <div className="keen-slider__slide css-logo language-logo" onClick={css}>
         <img src="\language_icons\css-logo-64x64.png" alt="" />
       </div>
 
-      <div className="keen-slider__slide react-logo language-logo">
+      <div
+        className="keen-slider__slide react-logo language-logo"
+        onClick={react}
+      >
         <img src="\language_icons\react-64x64.png" alt="" />
       </div>
 
-      <div className="keen-slider__slide python-logo language-logo">
+      <div
+        className="keen-slider__slide python-logo language-logo"
+        onClick={python}
+      >
         <img src="\language_icons\python-64x64.png" alt="" />
       </div>
 
-      <div className="keen-slider__slide C-logo language-logo">
+      <div className="keen-slider__slide C-logo language-logo" onClick={c}>
         <img src="\language_icons\c-64x64.png" alt="" />
       </div>
     </div>
